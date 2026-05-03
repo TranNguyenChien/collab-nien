@@ -27,6 +27,14 @@
 			"recommended": true,
 			"correctness": {
 				"noChildrenProp": "off"
+			},
+			"suspicious": {
+				"noDocumentCookie": "off",
+				"noArrayIndexKey": "off"
+			},
+			"a11y": {
+				"noLabelWithoutControl": "off",
+				"useSemanticElements": "off"
 			}
 		}
 	},

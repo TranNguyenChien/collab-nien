@@ -30,7 +30,6 @@ export function setCookie(
 ): void {
 	if (typeof document === "undefined") return;
 
-	// biome-ignore lint/suspicious/noDocumentCookie: <explanation>
 	document.cookie = `${name}=${value}; path=/; max-age=${maxAge}`;
 }
 
@@ -40,6 +39,5 @@ export function setCookie(
 export function removeCookie(name: string): void {
 	if (typeof document === "undefined") return;
 
-	// biome-ignore lint/suspicious/noDocumentCookie: <explanation>
 	document.cookie = `${name}=; path=/; max-age=0`;
 }

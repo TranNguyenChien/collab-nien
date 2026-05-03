@@ -19,7 +19,7 @@ export function SiteFooter() {
 					{FOOTER_LINKS.map((link) => (
 						<a
 							key={link}
-							href="#"
+							href="/"
 							className="text-label-sm text-on-surface-variant uppercase tracking-wider hover:text-on-surface transition-colors"
 						>
 							{link}

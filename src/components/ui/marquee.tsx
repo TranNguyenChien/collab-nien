@@ -83,7 +83,6 @@ export function Marquee({
 					<>
 						{Array.from({ length: repeat }, (_, index) => (
 							<div
-								// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
 								key={index}
 								className={cn(
 									!vertical ? "flex-row gap-(--gap)" : "flex-col gap-(--gap)",
