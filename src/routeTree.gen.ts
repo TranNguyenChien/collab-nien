@@ -12,10 +12,11 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as CollabrationRouteRouteImport } from './routes/collabration/route'
 import { Route as AuthRouteRouteImport } from './routes/_auth/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CollabrationIndexRouteImport } from './routes/collabration/index'
 import { Route as AuthSignUpRouteImport } from './routes/_auth/sign-up'
+import { Route as AuthSignInRouteImport } from './routes/_auth/sign-in'
+import { Route as AuthOtpRouteImport } from './routes/_auth/otp'
 import { Route as AuthForgotPasswordRouteImport } from './routes/_auth/forgot-password'
-import { Route as CollabrationAuthSignInRouteImport } from './routes/collabration/_auth/sign-in'
-import { Route as CollabrationAuthOtpRouteImport } from './routes/collabration/_auth/otp'
 
 const CollabrationRouteRoute = CollabrationRouteRouteImport.update({
   id: '/collabration',
@@ -31,9 +32,24 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CollabrationIndexRoute = CollabrationIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => CollabrationRouteRoute,
+} as any)
 const AuthSignUpRoute = AuthSignUpRouteImport.update({
   id: '/sign-up',
   path: '/sign-up',
+  getParentRoute: () => AuthRouteRoute,
+} as any)
+const AuthSignInRoute = AuthSignInRouteImport.update({
+  id: '/sign-in',
+  path: '/sign-in',
+  getParentRoute: () => AuthRouteRoute,
+} as any)
+const AuthOtpRoute = AuthOtpRouteImport.update({
+  id: '/otp',
+  path: '/otp',
   getParentRoute: () => AuthRouteRoute,
 } as any)
 const AuthForgotPasswordRoute = AuthForgotPasswordRouteImport.update({
@@ -41,32 +57,23 @@ const AuthForgotPasswordRoute = AuthForgotPasswordRouteImport.update({
   path: '/forgot-password',
   getParentRoute: () => AuthRouteRoute,
 } as any)
-const CollabrationAuthSignInRoute = CollabrationAuthSignInRouteImport.update({
-  id: '/_auth/sign-in',
-  path: '/sign-in',
-  getParentRoute: () => CollabrationRouteRoute,
-} as any)
-const CollabrationAuthOtpRoute = CollabrationAuthOtpRouteImport.update({
-  id: '/_auth/otp',
-  path: '/otp',
-  getParentRoute: () => CollabrationRouteRoute,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/collabration': typeof CollabrationRouteRouteWithChildren
   '/forgot-password': typeof AuthForgotPasswordRoute
+  '/otp': typeof AuthOtpRoute
+  '/sign-in': typeof AuthSignInRoute
   '/sign-up': typeof AuthSignUpRoute
-  '/collabration/otp': typeof CollabrationAuthOtpRoute
-  '/collabration/sign-in': typeof CollabrationAuthSignInRoute
+  '/collabration/': typeof CollabrationIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/collabration': typeof CollabrationRouteRouteWithChildren
   '/forgot-password': typeof AuthForgotPasswordRoute
+  '/otp': typeof AuthOtpRoute
+  '/sign-in': typeof AuthSignInRoute
   '/sign-up': typeof AuthSignUpRoute
-  '/collabration/otp': typeof CollabrationAuthOtpRoute
-  '/collabration/sign-in': typeof CollabrationAuthSignInRoute
+  '/collabration': typeof CollabrationIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -74,9 +81,10 @@ export interface FileRoutesById {
   '/_auth': typeof AuthRouteRouteWithChildren
   '/collabration': typeof CollabrationRouteRouteWithChildren
   '/_auth/forgot-password': typeof AuthForgotPasswordRoute
+  '/_auth/otp': typeof AuthOtpRoute
+  '/_auth/sign-in': typeof AuthSignInRoute
   '/_auth/sign-up': typeof AuthSignUpRoute
-  '/collabration/_auth/otp': typeof CollabrationAuthOtpRoute
-  '/collabration/_auth/sign-in': typeof CollabrationAuthSignInRoute
+  '/collabration/': typeof CollabrationIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -84,26 +92,28 @@ export interface FileRouteTypes {
     | '/'
     | '/collabration'
     | '/forgot-password'
+    | '/otp'
+    | '/sign-in'
     | '/sign-up'
-    | '/collabration/otp'
-    | '/collabration/sign-in'
+    | '/collabration/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/collabration'
     | '/forgot-password'
+    | '/otp'
+    | '/sign-in'
     | '/sign-up'
-    | '/collabration/otp'
-    | '/collabration/sign-in'
+    | '/collabration'
   id:
     | '__root__'
     | '/'
     | '/_auth'
     | '/collabration'
     | '/_auth/forgot-password'
+    | '/_auth/otp'
+    | '/_auth/sign-in'
     | '/_auth/sign-up'
-    | '/collabration/_auth/otp'
-    | '/collabration/_auth/sign-in'
+    | '/collabration/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -135,11 +145,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/collabration/': {
+      id: '/collabration/'
+      path: '/'
+      fullPath: '/collabration/'
+      preLoaderRoute: typeof CollabrationIndexRouteImport
+      parentRoute: typeof CollabrationRouteRoute
+    }
     '/_auth/sign-up': {
       id: '/_auth/sign-up'
       path: '/sign-up'
       fullPath: '/sign-up'
       preLoaderRoute: typeof AuthSignUpRouteImport
+      parentRoute: typeof AuthRouteRoute
+    }
+    '/_auth/sign-in': {
+      id: '/_auth/sign-in'
+      path: '/sign-in'
+      fullPath: '/sign-in'
+      preLoaderRoute: typeof AuthSignInRouteImport
+      parentRoute: typeof AuthRouteRoute
+    }
+    '/_auth/otp': {
+      id: '/_auth/otp'
+      path: '/otp'
+      fullPath: '/otp'
+      preLoaderRoute: typeof AuthOtpRouteImport
       parentRoute: typeof AuthRouteRoute
     }
     '/_auth/forgot-password': {
@@ -149,30 +180,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthForgotPasswordRouteImport
       parentRoute: typeof AuthRouteRoute
     }
-    '/collabration/_auth/sign-in': {
-      id: '/collabration/_auth/sign-in'
-      path: '/sign-in'
-      fullPath: '/collabration/sign-in'
-      preLoaderRoute: typeof CollabrationAuthSignInRouteImport
-      parentRoute: typeof CollabrationRouteRoute
-    }
-    '/collabration/_auth/otp': {
-      id: '/collabration/_auth/otp'
-      path: '/otp'
-      fullPath: '/collabration/otp'
-      preLoaderRoute: typeof CollabrationAuthOtpRouteImport
-      parentRoute: typeof CollabrationRouteRoute
-    }
   }
 }
 
 interface AuthRouteRouteChildren {
   AuthForgotPasswordRoute: typeof AuthForgotPasswordRoute
+  AuthOtpRoute: typeof AuthOtpRoute
+  AuthSignInRoute: typeof AuthSignInRoute
   AuthSignUpRoute: typeof AuthSignUpRoute
 }
 
 const AuthRouteRouteChildren: AuthRouteRouteChildren = {
   AuthForgotPasswordRoute: AuthForgotPasswordRoute,
+  AuthOtpRoute: AuthOtpRoute,
+  AuthSignInRoute: AuthSignInRoute,
   AuthSignUpRoute: AuthSignUpRoute,
 }
 
@@ -181,13 +202,11 @@ const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(
 )
 
 interface CollabrationRouteRouteChildren {
-  CollabrationAuthOtpRoute: typeof CollabrationAuthOtpRoute
-  CollabrationAuthSignInRoute: typeof CollabrationAuthSignInRoute
+  CollabrationIndexRoute: typeof CollabrationIndexRoute
 }
 
 const CollabrationRouteRouteChildren: CollabrationRouteRouteChildren = {
-  CollabrationAuthOtpRoute: CollabrationAuthOtpRoute,
-  CollabrationAuthSignInRoute: CollabrationAuthSignInRoute,
+  CollabrationIndexRoute: CollabrationIndexRoute,
 }
 
 const CollabrationRouteRouteWithChildren =

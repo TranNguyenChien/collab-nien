@@ -11,6 +11,7 @@ export const CARDS = [
 		variant: "default",
 		className: "bg-surface-container-lowest",
 		pathname: "/",
+		tenant: "membership",
 	},
 	{
 		Icon: Machine,
@@ -20,6 +21,7 @@ export const CARDS = [
 		cta: "HỢP TÁC SẢN XUẤT",
 		variant: "outline",
 		className: "bg-surface-container-highest",
-		pathname: "/collabration/sign-in",
+		pathname: "/sign-in",
+		tenant: "vendor",
 	},
 ] as const;

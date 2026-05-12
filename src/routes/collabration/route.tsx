@@ -1,4 +1,5 @@
-import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
+import { createFileRoute, redirect } from "@tanstack/react-router";
+import CollabrationLayout from "@/components/layouts/collabration";
 import { getCookie } from "@/lib/cookies";
 
 export const Route = createFileRoute("/collabration")({
@@ -8,5 +9,5 @@ export const Route = createFileRoute("/collabration")({
 			redirect({ to: "/collabration", throw: true });
 		}
 	},
-	component: () => <Outlet />,
+	component: CollabrationLayout,
 });

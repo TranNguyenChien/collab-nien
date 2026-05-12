@@ -1,8 +1,8 @@
-import { SiteFooter } from "@/components/layouts/SiteFooter";
+import Footer from "@/components/layouts/Footer";
 import { SiteHeader } from "@/components/layouts/SiteHeader";
-import { HomeCards } from "@/features/home/components/HomeCards";
-import { HomeHero } from "@/features/home/components/HomeHero";
-import { HomeQuickLinks } from "@/features/home/components/HomeQuickLinks";
+import { HomeCards } from "@/features/home/components/home-cards";
+import { HomeHero } from "@/features/home/components/home-hero";
+import { HomeQuickLinks } from "@/features/home/components/home-quick-links";
 
 export function HomePage() {
 	return (
@@ -13,7 +13,7 @@ export function HomePage() {
 				<HomeCards />
 				<HomeQuickLinks />
 			</main>
-			<SiteFooter />
+			<Footer />
 		</div>
 	);
 }

@@ -1,5 +1,4 @@
 import type { FC } from "react";
-import { SiteFooter } from "@/components/layouts/SiteFooter";
 import { SiteHeader } from "@/components/layouts/SiteHeader";
 import { Marquee } from "@/components/ui/marquee";
 import { BankAccountSection } from "@/features/auth/sign-up/components/bank-account";
@@ -38,7 +37,6 @@ const SignUp: FC = () => {
 					SEN NGHỆ THUẬT • TRADITION • CRAFTSMANSHIP • MODERN ATELIER • QUALITY
 				</span>
 			</Marquee>
-			<SiteFooter />
 		</>
 	);
 };

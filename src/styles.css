@@ -10,7 +10,7 @@
   /* ================================
    * FONT FAMILY
    * ================================ */
-  --font-sans: "Quicksand", sans-serif;
+  --font-sans: Quicksand, sans-serif;
   --font-heads: "Be VietNam Pro";
   /* ================================
    * COLORS — Primary (Warm Brown)
@@ -153,6 +153,7 @@
     background-color: var(--color-surface);
     color: var(--color-on-surface);
     font-family: var(--font-sans);
+    font-weight: 500;
     @apply bg-background text-foreground;
   }
 

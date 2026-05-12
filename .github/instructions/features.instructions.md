@@ -59,9 +59,9 @@ src/features/
 ├── products/                 # Products feature
 │   ├── api/
 │   ├── components/
-│   │   ├── ProductCard.tsx
-│   │   ├── ProductList.tsx
-│   │   └── ProductDetail. tsx
+│   │   ├── Product-card.tsx
+│   │   ├── Product-list.tsx
+│   │   └── Product-detail. tsx
 │   ├── hooks/
 │   ├── stores/
 │   ├── types/
@@ -106,14 +106,14 @@ features/products/
 │   ├── products-api.ts      # CRUD operations for products
 │   └── index.ts
 ├── components/
-│   ├── ProductCard.tsx      # Display single product
-│   ├── ProductList.tsx      # Display list of products
-│   ├── ProductFilters.tsx   # Filter products
-│   └── ProductDetail.tsx    # Product detail view
+│   ├── product-card.tsx      # Display single product
+│   ├── product-list.tsx      # Display list of products
+│   ├── product-filters.tsx   # Filter products
+│   └── product-detail.tsx    # Product detail view
 ├── hooks/
-│   ├── useProducts.ts       # Fetch products list
-│   ├── useProduct.ts        # Fetch single product
-│   ├── useCreateProduct.ts  # Create product
+│   ├── use-products.ts       # Fetch products list
+│   ├── use-product.ts        # Fetch single product
+│   ├── use-create-product.ts  # Create product
 │   └── index.ts
 ├── types/
 │   ├── product.types.ts     # Product, Category, etc.
