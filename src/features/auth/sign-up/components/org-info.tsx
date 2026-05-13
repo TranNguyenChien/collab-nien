@@ -55,7 +55,7 @@ export function OrgInfoSection() {
 								<Input
 									id={field.name}
 									name={field.name}
-									value={field.state.value}
+									value={field.state.value ?? ""}
 									onBlur={field.handleBlur}
 									onChange={(e) => field.handleChange(e.target.value)}
 									aria-invalid={isInvalid}
@@ -80,7 +80,7 @@ export function OrgInfoSection() {
 									Loại hình
 								</FieldLabel>
 								<Select
-									value={field.state.value}
+									value={field.state.value ?? ""}
 									onValueChange={(val) => field.handleChange(val ?? "")}
 									onOpenChange={() => field.handleBlur()}
 								>
@@ -117,7 +117,7 @@ export function OrgInfoSection() {
 								<Input
 									id={field.name}
 									name={field.name}
-									value={field.state.value}
+									value={field.state.value ?? ""}
 									onBlur={field.handleBlur}
 									onChange={(e) => field.handleChange(e.target.value)}
 									aria-invalid={isInvalid}
@@ -144,7 +144,7 @@ export function OrgInfoSection() {
 								<Input
 									id={field.name}
 									name={field.name}
-									value={field.state.value}
+									value={field.state.value ?? ""}
 									onBlur={field.handleBlur}
 									onChange={(e) => field.handleChange(e.target.value)}
 									aria-invalid={isInvalid}
@@ -169,7 +169,7 @@ export function OrgInfoSection() {
 									Ngày thành lập
 								</FieldLabel>
 								<DatePicker
-									value={field.state.value}
+									value={field.state.value ?? ""}
 									placeholder="Chọn ngày thành lập"
 									onChange={(value) =>
 										field.handleChange(new Date(value || ""))
@@ -195,7 +195,7 @@ export function OrgInfoSection() {
 								<Input
 									id={field.name}
 									name={field.name}
-									value={field.state.value}
+									value={field.state.value ?? ""}
 									onBlur={field.handleBlur}
 									onChange={(e) => field.handleChange(e.target.value)}
 									aria-invalid={isInvalid}
@@ -222,7 +222,7 @@ export function OrgInfoSection() {
 								<Input
 									id={field.name}
 									name={field.name}
-									value={field.state.value}
+									value={field.state.value ?? ""}
 									onBlur={field.handleBlur}
 									onChange={(e) => field.handleChange(e.target.value)}
 									aria-invalid={isInvalid}

@@ -53,7 +53,7 @@ export const ForgotPasswordForm: FC = () => {
 										</FieldLabel>
 										<Input
 											placeholder="Nhập địa chỉ Email"
-											value={field.state.value}
+											value={field.state.value ?? ""}
 											onChange={(e) => field.handleChange(e.target.value)}
 										/>
 									</Field>

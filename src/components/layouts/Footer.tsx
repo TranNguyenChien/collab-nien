@@ -13,7 +13,7 @@ import {
 const Footer: FC = () => {
 	return (
 		<footer className=" border-outline-variant mt-auto">
-			<div className="page-wrap py-8 px-4 bg-surface-container-low rounded-lg shadow">
+			<div className="page-wrap py-8 px-4 bg-surface-container-lowest rounded-lg shadow">
 				<div className="grid grid-cols-6 gap-4">
 					<div className="col-span-2">
 						<div className="w-10 h-10 bg-inverse-surface rounded flex items-center justify-center mb-4">

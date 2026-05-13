@@ -1,20 +1,20 @@
 import { Link } from "@tanstack/react-router";
 import { Bell, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { DASHBOARD_NAV_ITEMS } from "@/features/collabration/dashboard/constant";
+import { DASHBOARD_NAV_ITEMS } from "@/constant/header";
 import { cn } from "@/lib/utils";
 
 export function HeaderVendor() {
 	return (
 		<header className="sticky top-2 z-50">
-			<div className="page-wrap px-6 py-4 flex items-center justify-between gap-8 bg-background shadow my-2 rounded-lg">
+			<div className="page-wrap px-6 py-4 flex items-center justify-between gap-8 bg-surface-container-lowest shadow my-2 rounded-lg">
 				<nav className="flex items-center gap-8 flex-1 justify-start">
 					{DASHBOARD_NAV_ITEMS.map((item) => (
 						<Link
 							key={item.label}
-							to="/"
+							to={"to" in item ? item.to : "/"}
 							className={cn(
-								"text-label-sm tracking-wider text-on-surface-variant hover:text-primary transition-colors pb-1",
+								"text-label-sm tracking-wider text-primary hover:text-primary transition-colors pb-1",
 								item.active && "text-primary font-bold",
 							)}
 						>

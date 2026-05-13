@@ -26,7 +26,7 @@ const SignInForm = () => {
 								id={field.name}
 								type="email"
 								name={field.name}
-								value={field.state.value}
+								value={field.state.value ?? ""}
 								onBlur={field.handleBlur}
 								onChange={(e) => field.handleChange(e.target.value)}
 								aria-invalid={isInValid}
@@ -50,7 +50,7 @@ const SignInForm = () => {
 							<Input
 								id={field.name}
 								name={field.name}
-								value={field.state.value}
+								value={field.state.value ?? ""}
 								onBlur={field.handleBlur}
 								onChange={(e) => field.handleChange(e.target.value)}
 								type="password"

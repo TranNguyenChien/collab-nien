@@ -56,7 +56,7 @@ export function RepresentativeSection() {
 								<Input
 									id={field.name}
 									name={field.name}
-									value={field.state.value}
+									value={field.state.value ?? ""}
 									onBlur={field.handleBlur}
 									onChange={(e) => field.handleChange(e.target.value)}
 									aria-invalid={isInvalid}
@@ -83,7 +83,7 @@ export function RepresentativeSection() {
 								<Input
 									id={field.name}
 									name={field.name}
-									value={field.state.value}
+									value={field.state.value ?? ""}
 									onBlur={field.handleBlur}
 									onChange={(e) => field.handleChange(e.target.value)}
 									aria-invalid={isInvalid}
@@ -110,7 +110,7 @@ export function RepresentativeSection() {
 								<Input
 									id={field.name}
 									name={field.name}
-									value={field.state.value}
+									value={field.state.value ?? ""}
 									onBlur={field.handleBlur}
 									onChange={(e) => field.handleChange(e.target.value)}
 									aria-invalid={isInvalid}
@@ -136,7 +136,7 @@ export function RepresentativeSection() {
 								</FieldLabel>
 								<DatePicker
 									className="w-full"
-									value={field.state.value}
+									value={field.state.value ?? ""}
 									placeholder="Chọn ngày cấp"
 									onChange={(value) =>
 										field.handleChange(new Date(value || ""))
@@ -162,7 +162,7 @@ export function RepresentativeSection() {
 								<Input
 									id={field.name}
 									name={field.name}
-									value={field.state.value}
+									value={field.state.value ?? ""}
 									onBlur={field.handleBlur}
 									onChange={(e) => field.handleChange(e.target.value)}
 									aria-invalid={isInvalid}
@@ -190,7 +190,7 @@ export function RepresentativeSection() {
 									id={field.name}
 									name={field.name}
 									type="tel"
-									value={field.state.value}
+									value={field.state.value ?? ""}
 									onBlur={field.handleBlur}
 									onChange={(e) => field.handleChange(e.target.value)}
 									aria-invalid={isInvalid}
@@ -216,7 +216,7 @@ export function RepresentativeSection() {
 								</FieldLabel>
 								<DatePicker
 									className="w-full"
-									value={field.state.value}
+									value={field.state.value ?? ""}
 									placeholder="Chọn ngày sinh"
 									onChange={(value) =>
 										field.handleChange(new Date(value || ""))
@@ -240,7 +240,7 @@ export function RepresentativeSection() {
 									Giới tính
 								</FieldLabel>
 								<Select
-									value={field.state.value}
+									value={field.state.value ?? ""}
 									onValueChange={(val) => field.handleChange(val ?? "")}
 									onOpenChange={() => field.handleBlur()}
 								>
@@ -277,7 +277,7 @@ export function RepresentativeSection() {
 								<Input
 									id={field.name}
 									name={field.name}
-									value={field.state.value}
+									value={field.state.value ?? ""}
 									onBlur={field.handleBlur}
 									onChange={(e) => field.handleChange(e.target.value)}
 									aria-invalid={isInvalid}

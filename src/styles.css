@@ -151,9 +151,10 @@
 
   body {
     background-color: var(--color-surface);
-    color: var(--color-on-surface);
+    color: var(--color-primary);
     font-family: var(--font-sans);
     font-weight: 500;
+
     @apply bg-background text-foreground;
   }
 

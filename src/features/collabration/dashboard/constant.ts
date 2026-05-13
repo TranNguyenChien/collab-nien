@@ -91,13 +91,3 @@ export const WEEKLY_STATS = [
 ] as const;
 
 export const COUNTDOWN = { days: "02", hours: "14", minutes: "35" } as const;
-
-export const DASHBOARD_NAV_ITEMS = [
-	{ label: "Trang chủ", active: true },
-	{ label: "Giao dịch", active: false },
-	{ label: "Sản xuất", active: false },
-	{ label: "Nguyên liệu", active: false },
-	{ label: "Phụ liệu", active: false },
-	{ label: "Đơn hàng", active: false },
-	{ label: "Tài chính", active: false },
-] as const;
