@@ -18,7 +18,9 @@ import { Route as AuthSignInRouteImport } from './routes/_auth/sign-in'
 import { Route as AuthOtpRouteImport } from './routes/_auth/otp'
 import { Route as AuthForgotPasswordRouteImport } from './routes/_auth/forgot-password'
 import { Route as CollabrationInventoryIndexRouteImport } from './routes/collabration/inventory/index'
+import { Route as CollabrationAccessoriesIndexRouteImport } from './routes/collabration/accessories/index'
 import { Route as CollabrationInventoryAddRouteImport } from './routes/collabration/inventory/add'
+import { Route as CollabrationAccessoriesAddRouteImport } from './routes/collabration/accessories/add'
 
 const CollabrationRouteRoute = CollabrationRouteRouteImport.update({
   id: '/collabration',
@@ -65,10 +67,22 @@ const CollabrationInventoryIndexRoute =
     path: '/inventory/',
     getParentRoute: () => CollabrationRouteRoute,
   } as any)
+const CollabrationAccessoriesIndexRoute =
+  CollabrationAccessoriesIndexRouteImport.update({
+    id: '/accessories/',
+    path: '/accessories/',
+    getParentRoute: () => CollabrationRouteRoute,
+  } as any)
 const CollabrationInventoryAddRoute =
   CollabrationInventoryAddRouteImport.update({
     id: '/inventory/add',
     path: '/inventory/add',
+    getParentRoute: () => CollabrationRouteRoute,
+  } as any)
+const CollabrationAccessoriesAddRoute =
+  CollabrationAccessoriesAddRouteImport.update({
+    id: '/accessories/add',
+    path: '/accessories/add',
     getParentRoute: () => CollabrationRouteRoute,
   } as any)
 
@@ -80,7 +94,9 @@ export interface FileRoutesByFullPath {
   '/sign-in': typeof AuthSignInRoute
   '/sign-up': typeof AuthSignUpRoute
   '/collabration/': typeof CollabrationIndexRoute
+  '/collabration/accessories/add': typeof CollabrationAccessoriesAddRoute
   '/collabration/inventory/add': typeof CollabrationInventoryAddRoute
+  '/collabration/accessories/': typeof CollabrationAccessoriesIndexRoute
   '/collabration/inventory/': typeof CollabrationInventoryIndexRoute
 }
 export interface FileRoutesByTo {
@@ -90,7 +106,9 @@ export interface FileRoutesByTo {
   '/sign-in': typeof AuthSignInRoute
   '/sign-up': typeof AuthSignUpRoute
   '/collabration': typeof CollabrationIndexRoute
+  '/collabration/accessories/add': typeof CollabrationAccessoriesAddRoute
   '/collabration/inventory/add': typeof CollabrationInventoryAddRoute
+  '/collabration/accessories': typeof CollabrationAccessoriesIndexRoute
   '/collabration/inventory': typeof CollabrationInventoryIndexRoute
 }
 export interface FileRoutesById {
@@ -103,7 +121,9 @@ export interface FileRoutesById {
   '/_auth/sign-in': typeof AuthSignInRoute
   '/_auth/sign-up': typeof AuthSignUpRoute
   '/collabration/': typeof CollabrationIndexRoute
+  '/collabration/accessories/add': typeof CollabrationAccessoriesAddRoute
   '/collabration/inventory/add': typeof CollabrationInventoryAddRoute
+  '/collabration/accessories/': typeof CollabrationAccessoriesIndexRoute
   '/collabration/inventory/': typeof CollabrationInventoryIndexRoute
 }
 export interface FileRouteTypes {
@@ -116,7 +136,9 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/sign-up'
     | '/collabration/'
+    | '/collabration/accessories/add'
     | '/collabration/inventory/add'
+    | '/collabration/accessories/'
     | '/collabration/inventory/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -126,7 +148,9 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/sign-up'
     | '/collabration'
+    | '/collabration/accessories/add'
     | '/collabration/inventory/add'
+    | '/collabration/accessories'
     | '/collabration/inventory'
   id:
     | '__root__'
@@ -138,7 +162,9 @@ export interface FileRouteTypes {
     | '/_auth/sign-in'
     | '/_auth/sign-up'
     | '/collabration/'
+    | '/collabration/accessories/add'
     | '/collabration/inventory/add'
+    | '/collabration/accessories/'
     | '/collabration/inventory/'
   fileRoutesById: FileRoutesById
 }
@@ -213,11 +239,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CollabrationInventoryIndexRouteImport
       parentRoute: typeof CollabrationRouteRoute
     }
+    '/collabration/accessories/': {
+      id: '/collabration/accessories/'
+      path: '/accessories'
+      fullPath: '/collabration/accessories/'
+      preLoaderRoute: typeof CollabrationAccessoriesIndexRouteImport
+      parentRoute: typeof CollabrationRouteRoute
+    }
     '/collabration/inventory/add': {
       id: '/collabration/inventory/add'
       path: '/inventory/add'
       fullPath: '/collabration/inventory/add'
       preLoaderRoute: typeof CollabrationInventoryAddRouteImport
+      parentRoute: typeof CollabrationRouteRoute
+    }
+    '/collabration/accessories/add': {
+      id: '/collabration/accessories/add'
+      path: '/accessories/add'
+      fullPath: '/collabration/accessories/add'
+      preLoaderRoute: typeof CollabrationAccessoriesAddRouteImport
       parentRoute: typeof CollabrationRouteRoute
     }
   }
@@ -243,13 +283,17 @@ const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(
 
 interface CollabrationRouteRouteChildren {
   CollabrationIndexRoute: typeof CollabrationIndexRoute
+  CollabrationAccessoriesAddRoute: typeof CollabrationAccessoriesAddRoute
   CollabrationInventoryAddRoute: typeof CollabrationInventoryAddRoute
+  CollabrationAccessoriesIndexRoute: typeof CollabrationAccessoriesIndexRoute
   CollabrationInventoryIndexRoute: typeof CollabrationInventoryIndexRoute
 }
 
 const CollabrationRouteRouteChildren: CollabrationRouteRouteChildren = {
   CollabrationIndexRoute: CollabrationIndexRoute,
+  CollabrationAccessoriesAddRoute: CollabrationAccessoriesAddRoute,
   CollabrationInventoryAddRoute: CollabrationInventoryAddRoute,
+  CollabrationAccessoriesIndexRoute: CollabrationAccessoriesIndexRoute,
   CollabrationInventoryIndexRoute: CollabrationInventoryIndexRoute,
 }
 

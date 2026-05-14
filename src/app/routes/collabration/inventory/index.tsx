@@ -40,7 +40,7 @@ export function CollabInventoryPage() {
 	}
 
 	return (
-		<div className="min-h-screen flex flex-col bg-background">
+		<div className="flex flex-col bg-background">
 			<main className="flex-1">
 				<div className="page-wrap py-4">
 					{/* Header */}
