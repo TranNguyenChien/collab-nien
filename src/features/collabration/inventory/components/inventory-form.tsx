@@ -44,7 +44,7 @@ const InventoryForm: FC<FormContentProps> = ({
 					})}
 				</div>
 
-				<div className="sticky bottom-2 bg-surface-container-highest rounded-lg shadow p-4 flex items-center justify-between gap-4 ">
+				<div className="sticky bottom-2 bg-surface-container-highest rounded-lg shadow p-4 flex items-center justify-between gap-4">
 					<p className="text-body-sm text-on-surface-variant">
 						Tất cả thông tin sẽ được mã hóa và lưu bảo mật theo tiêu chuẩn của
 						NIÉN.

@@ -17,7 +17,9 @@ import { Route as AuthSignUpRouteImport } from './routes/_auth/sign-up'
 import { Route as AuthSignInRouteImport } from './routes/_auth/sign-in'
 import { Route as AuthOtpRouteImport } from './routes/_auth/otp'
 import { Route as AuthForgotPasswordRouteImport } from './routes/_auth/forgot-password'
+import { Route as CollabrationManufacturingIndexRouteImport } from './routes/collabration/manufacturing/index'
 import { Route as CollabrationInventoryIndexRouteImport } from './routes/collabration/inventory/index'
+import { Route as CollabrationCapacityIndexRouteImport } from './routes/collabration/capacity/index'
 import { Route as CollabrationAccessoriesIndexRouteImport } from './routes/collabration/accessories/index'
 import { Route as CollabrationInventoryAddRouteImport } from './routes/collabration/inventory/add'
 import { Route as CollabrationAccessoriesAddRouteImport } from './routes/collabration/accessories/add'
@@ -61,10 +63,22 @@ const AuthForgotPasswordRoute = AuthForgotPasswordRouteImport.update({
   path: '/forgot-password',
   getParentRoute: () => AuthRouteRoute,
 } as any)
+const CollabrationManufacturingIndexRoute =
+  CollabrationManufacturingIndexRouteImport.update({
+    id: '/manufacturing/',
+    path: '/manufacturing/',
+    getParentRoute: () => CollabrationRouteRoute,
+  } as any)
 const CollabrationInventoryIndexRoute =
   CollabrationInventoryIndexRouteImport.update({
     id: '/inventory/',
     path: '/inventory/',
+    getParentRoute: () => CollabrationRouteRoute,
+  } as any)
+const CollabrationCapacityIndexRoute =
+  CollabrationCapacityIndexRouteImport.update({
+    id: '/capacity/',
+    path: '/capacity/',
     getParentRoute: () => CollabrationRouteRoute,
   } as any)
 const CollabrationAccessoriesIndexRoute =
@@ -97,7 +111,9 @@ export interface FileRoutesByFullPath {
   '/collabration/accessories/add': typeof CollabrationAccessoriesAddRoute
   '/collabration/inventory/add': typeof CollabrationInventoryAddRoute
   '/collabration/accessories/': typeof CollabrationAccessoriesIndexRoute
+  '/collabration/capacity/': typeof CollabrationCapacityIndexRoute
   '/collabration/inventory/': typeof CollabrationInventoryIndexRoute
+  '/collabration/manufacturing/': typeof CollabrationManufacturingIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -109,7 +125,9 @@ export interface FileRoutesByTo {
   '/collabration/accessories/add': typeof CollabrationAccessoriesAddRoute
   '/collabration/inventory/add': typeof CollabrationInventoryAddRoute
   '/collabration/accessories': typeof CollabrationAccessoriesIndexRoute
+  '/collabration/capacity': typeof CollabrationCapacityIndexRoute
   '/collabration/inventory': typeof CollabrationInventoryIndexRoute
+  '/collabration/manufacturing': typeof CollabrationManufacturingIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -124,7 +142,9 @@ export interface FileRoutesById {
   '/collabration/accessories/add': typeof CollabrationAccessoriesAddRoute
   '/collabration/inventory/add': typeof CollabrationInventoryAddRoute
   '/collabration/accessories/': typeof CollabrationAccessoriesIndexRoute
+  '/collabration/capacity/': typeof CollabrationCapacityIndexRoute
   '/collabration/inventory/': typeof CollabrationInventoryIndexRoute
+  '/collabration/manufacturing/': typeof CollabrationManufacturingIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -139,7 +159,9 @@ export interface FileRouteTypes {
     | '/collabration/accessories/add'
     | '/collabration/inventory/add'
     | '/collabration/accessories/'
+    | '/collabration/capacity/'
     | '/collabration/inventory/'
+    | '/collabration/manufacturing/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -151,7 +173,9 @@ export interface FileRouteTypes {
     | '/collabration/accessories/add'
     | '/collabration/inventory/add'
     | '/collabration/accessories'
+    | '/collabration/capacity'
     | '/collabration/inventory'
+    | '/collabration/manufacturing'
   id:
     | '__root__'
     | '/'
@@ -165,7 +189,9 @@ export interface FileRouteTypes {
     | '/collabration/accessories/add'
     | '/collabration/inventory/add'
     | '/collabration/accessories/'
+    | '/collabration/capacity/'
     | '/collabration/inventory/'
+    | '/collabration/manufacturing/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -232,11 +258,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthForgotPasswordRouteImport
       parentRoute: typeof AuthRouteRoute
     }
+    '/collabration/manufacturing/': {
+      id: '/collabration/manufacturing/'
+      path: '/manufacturing'
+      fullPath: '/collabration/manufacturing/'
+      preLoaderRoute: typeof CollabrationManufacturingIndexRouteImport
+      parentRoute: typeof CollabrationRouteRoute
+    }
     '/collabration/inventory/': {
       id: '/collabration/inventory/'
       path: '/inventory'
       fullPath: '/collabration/inventory/'
       preLoaderRoute: typeof CollabrationInventoryIndexRouteImport
+      parentRoute: typeof CollabrationRouteRoute
+    }
+    '/collabration/capacity/': {
+      id: '/collabration/capacity/'
+      path: '/capacity'
+      fullPath: '/collabration/capacity/'
+      preLoaderRoute: typeof CollabrationCapacityIndexRouteImport
       parentRoute: typeof CollabrationRouteRoute
     }
     '/collabration/accessories/': {
@@ -286,7 +326,9 @@ interface CollabrationRouteRouteChildren {
   CollabrationAccessoriesAddRoute: typeof CollabrationAccessoriesAddRoute
   CollabrationInventoryAddRoute: typeof CollabrationInventoryAddRoute
   CollabrationAccessoriesIndexRoute: typeof CollabrationAccessoriesIndexRoute
+  CollabrationCapacityIndexRoute: typeof CollabrationCapacityIndexRoute
   CollabrationInventoryIndexRoute: typeof CollabrationInventoryIndexRoute
+  CollabrationManufacturingIndexRoute: typeof CollabrationManufacturingIndexRoute
 }
 
 const CollabrationRouteRouteChildren: CollabrationRouteRouteChildren = {
@@ -294,7 +336,9 @@ const CollabrationRouteRouteChildren: CollabrationRouteRouteChildren = {
   CollabrationAccessoriesAddRoute: CollabrationAccessoriesAddRoute,
   CollabrationInventoryAddRoute: CollabrationInventoryAddRoute,
   CollabrationAccessoriesIndexRoute: CollabrationAccessoriesIndexRoute,
+  CollabrationCapacityIndexRoute: CollabrationCapacityIndexRoute,
   CollabrationInventoryIndexRoute: CollabrationInventoryIndexRoute,
+  CollabrationManufacturingIndexRoute: CollabrationManufacturingIndexRoute,
 }
 
 const CollabrationRouteRouteWithChildren =
