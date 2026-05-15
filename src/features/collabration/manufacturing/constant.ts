@@ -241,3 +241,186 @@ export const MATERIAL_PROCESSING_DATA: MaterialProcessingRow[] = [
 		note: "Dùng nước xả chuyên dụng cao cấp",
 	},
 ];
+
+// ── Equipment & Quality Page ──────────────────────────────────────────────────
+
+export type MachineRow = {
+	id: string;
+	name: string;
+	quantity: number;
+	operators: number;
+};
+
+export const DEFAULT_MACHINES: MachineRow[] = [
+	{ id: "m-001", name: "Máy 1 kim", quantity: 12, operators: 12 },
+	{ id: "m-002", name: "Máy vắt sổ", quantity: 5, operators: 5 },
+	{ id: "m-003", name: "Máy đính cúc", quantity: 2, operators: 1 },
+];
+
+export type SegmentKey = "phoThong" | "trungKy" | "kyCapCao";
+
+export const SEGMENT_LABELS: Record<SegmentKey, string> = {
+	phoThong: "Phổ thông",
+	trungKy: "Trung kỳ",
+	kyCapCao: "Kỹ (Cao cấp)",
+} as const;
+
+export type OutputRow = {
+	segment: SegmentKey;
+	quantity: number;
+};
+
+export const DEFAULT_OUTPUT: OutputRow[] = [
+	{ segment: "phoThong", quantity: 25000 },
+	{ segment: "trungKy", quantity: 10000 },
+	{ segment: "kyCapCao", quantity: 5000 },
+];
+
+export type ErrorRateRow = {
+	segment: SegmentKey;
+	rate: number;
+};
+
+export const DEFAULT_ERROR_RATES: ErrorRateRow[] = [
+	{ segment: "phoThong", rate: 3.5 },
+	{ segment: "trungKy", rate: 1.8 },
+	{ segment: "kyCapCao", rate: 0.8 },
+];
+
+export type QcMethod =
+	| "inlineFinalChecklist"
+	| "inlineFinal"
+	| "finalPrePack"
+	| "chiFinal"
+	| "camTinh"
+	| "khongQc";
+
+export const QC_METHOD_LABELS: Record<QcMethod, string> = {
+	inlineFinalChecklist: "INLINE + FINAL + CHECKLIST",
+	inlineFinal: "INLINE + FINAL",
+	finalPrePack: "FINAL + PRE-PACK",
+	chiFinal: "CHỈ FINAL",
+	camTinh: "QC CẢM TÍNH / KHÔNG BIỂU MẪU",
+	khongQc: "KHÔNG CÓ QC",
+} as const;
+
+export const QC_METHODS: QcMethod[] = [
+	"inlineFinalChecklist",
+	"inlineFinal",
+	"finalPrePack",
+	"chiFinal",
+	"camTinh",
+	"khongQc",
+];
+
+export type QcProcessRow = {
+	segment: SegmentKey;
+	method: QcMethod;
+};
+
+export const DEFAULT_QC_PROCESS: QcProcessRow[] = [
+	{ segment: "phoThong", method: "finalPrePack" },
+	{ segment: "trungKy", method: "inlineFinal" },
+	{ segment: "kyCapCao", method: "inlineFinalChecklist" },
+];
+
+// ── Operations & Reliability Page ─────────────────────────────────────────────
+
+export type PriceRange =
+	| "under300"
+	| "range300to500"
+	| "range500to1m"
+	| "range1mto3m"
+	| "over3m";
+
+export const PRICE_RANGES: PriceRange[] = [
+	"under300",
+	"range300to500",
+	"range500to1m",
+	"range1mto3m",
+	"over3m",
+];
+
+export const PRICE_RANGE_LABELS: Record<PriceRange, string> = {
+	under300: "Dưới 300 nghìn đồng",
+	range300to500: "Từ 300 - 500 nghìn đồng",
+	range500to1m: "Từ 500 - 1 triệu đồng",
+	range1mto3m: "Từ 1tr - 3 triệu đồng",
+	over3m: "Từ 3 triệu trở lên",
+} as const;
+
+export const MAX_PRICE_RANGES_PER_SEGMENT = 2;
+
+export type TimeRow = {
+	segment: SegmentKey;
+	hours: number | null;
+};
+
+export const DEFAULT_CHANGEOVER_TIME: TimeRow[] = [
+	{ segment: "phoThong", hours: null },
+	{ segment: "trungKy", hours: null },
+	{ segment: "kyCapCao", hours: null },
+];
+
+export const DEFAULT_COMPLETION_TIME: TimeRow[] = [
+	{ segment: "phoThong", hours: null },
+	{ segment: "trungKy", hours: null },
+	{ segment: "kyCapCao", hours: null },
+];
+
+export type MoqRow = {
+	segment: SegmentKey;
+	quantity: number;
+};
+
+export const DEFAULT_MOQ: MoqRow[] = [
+	{ segment: "phoThong", quantity: 0 },
+	{ segment: "trungKy", quantity: 0 },
+	{ segment: "kyCapCao", quantity: 0 },
+];
+
+export type PriceSegmentRow = {
+	segment: SegmentKey;
+	selectedRanges: PriceRange[];
+};
+
+export const DEFAULT_PRICE_SEGMENTS: PriceSegmentRow[] = [
+	{ segment: "phoThong", selectedRanges: [] },
+	{ segment: "trungKy", selectedRanges: [] },
+	{ segment: "kyCapCao", selectedRanges: [] },
+];
+
+export type ProgressItem = {
+	key: string;
+	label: string;
+	rate: number;
+};
+
+export const DEFAULT_PROGRESS_ITEMS: ProgressItem[] = [
+	{ key: "chuanBiVatTu", label: "Chuẩn bị vật tư", rate: 10 },
+	{ key: "mayMau", label: "May mẫu", rate: 10 },
+	{ key: "mayHangLoat", label: "May hàng loạt", rate: 20 },
+	{ key: "hoanThien", label: "Hoàn thiện", rate: 5 },
+];
+
+export type PaymentTermsValues = {
+	depositRate: number;
+	progressItems: ProgressItem[];
+	finalRate: number;
+	debtDays: number;
+};
+
+export const DEFAULT_PAYMENT_TERMS: PaymentTermsValues = {
+	depositRate: 30,
+	progressItems: DEFAULT_PROGRESS_ITEMS.map((p) => ({ ...p })),
+	finalRate: 25,
+	debtDays: 30,
+};
+
+export type OperationsFormValues = {
+	changeoverTime: TimeRow[];
+	completionTime: TimeRow[];
+	moq: MoqRow[];
+	priceSegments: PriceSegmentRow[];
+	paymentTerms: PaymentTermsValues;
+};

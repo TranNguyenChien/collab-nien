@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import {
 	AlertTriangle,
 	Bug,
@@ -10,11 +11,19 @@ import {
 function EquipmentQualityCard() {
 	return (
 		<div className="bg-surface-container-low p-6 rounded-lg shadow">
-			<div className="flex items-center gap-3 mb-6">
-				<Factory className="size-6 text-primary" />
-				<h2 className="text-title-md font-bold uppercase tracking-wide">
-					Thiết bị &amp; Chất lượng
-				</h2>
+			<div className="flex mb-6 items-center justify-between">
+				<div className="flex items-center gap-3">
+					<Factory className="size-6 text-primary" />
+					<h2 className="text-title-md font-bold uppercase tracking-wide">
+						Thiết bị &amp; Chất lượng
+					</h2>
+				</div>
+				<Link
+					to="/collabration/manufacturing/equipment"
+					className="text-sm font-medium text-primary underline-offset-4 hover:underline"
+				>
+					Chi tiết
+				</Link>
 			</div>
 			<div className="grid grid-cols-2 gap-6 mb-8">
 				<div className="flex flex-col gap-1">
@@ -53,11 +62,19 @@ function EquipmentQualityCard() {
 function OperationsReliabilityCard() {
 	return (
 		<div className="bg-surface-container-low p-6 rounded-lg shadow">
-			<div className="flex items-center gap-3 mb-6">
-				<ShieldCheck className="size-6 text-primary" />
-				<h2 className="text-title-md font-bold uppercase tracking-wide">
-					Vận hành &amp; Độ tin cậy
-				</h2>
+			<div className="mb-6 flex items-center justify-between">
+				<div className="flex items-center gap-3 ">
+					<ShieldCheck className="size-6 text-primary" />
+					<h2 className="text-title-md font-bold uppercase tracking-wide">
+						Vận hành &amp; Độ tin cậy
+					</h2>
+				</div>
+				<Link
+					to="/collabration/manufacturing/operations"
+					className="text-sm font-medium text-primary underline-offset-4 hover:underline"
+				>
+					Chi tiết
+				</Link>
 			</div>
 			<div className="flex flex-col gap-6">
 				<div className="flex items-center justify-between">
